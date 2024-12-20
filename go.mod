@@ -1,4 +1,4 @@
-module github.com/lwmacct/241220-go-refer
+module github.com/lwmacct/241220-go-pkgs
 
 go 1.23.4
 
