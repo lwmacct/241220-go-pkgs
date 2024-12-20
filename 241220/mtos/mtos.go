@@ -6,15 +6,13 @@ import (
 	"strconv"
 )
 
-type this struct{}
+type Ts struct{}
 
-func New() *this {
-	return &this{}
+func New() *Ts {
+	return &Ts{}
 }
 
-// String converts any basic type to its string representation.
-// For float types, it formats the number to two decimal places.
-func (t *this) String(v interface{}) string {
+func (t *Ts) String(v interface{}) string {
 	switch val := v.(type) {
 	case string:
 		return val
@@ -45,8 +43,7 @@ func (t *this) String(v interface{}) string {
 	}
 }
 
-// Int converts a string or numeric type to int.
-func (t *this) Int(v interface{}) int {
+func (t *Ts) Int(v interface{}) int {
 	switch val := v.(type) {
 	case string:
 		if i, err := strconv.Atoi(val); err == nil {
@@ -71,8 +68,7 @@ func (t *this) Int(v interface{}) int {
 	}
 }
 
-// Int64 converts a string or numeric type to int64.
-func (t *this) Int64(v interface{}) int64 {
+func (t *Ts) Int64(v interface{}) int64 {
 	switch val := v.(type) {
 	case string:
 		if i, err := strconv.ParseInt(val, 10, 64); err == nil {
@@ -105,8 +101,7 @@ func (t *this) Int64(v interface{}) int64 {
 	}
 }
 
-// Float64 converts a string or numeric type to float64.
-func (t *this) Float64(v interface{}) float64 {
+func (t *Ts) Float64(v interface{}) float64 {
 	switch val := v.(type) {
 	case string:
 		if f, err := strconv.ParseFloat(val, 64); err == nil {
@@ -131,8 +126,7 @@ func (t *this) Float64(v interface{}) float64 {
 	}
 }
 
-// Bool converts a string or numeric type to bool.
-func (t *this) Bool(v interface{}) bool {
+func (t *Ts) Bool(v interface{}) bool {
 	switch val := v.(type) {
 	case string:
 		return val == "1" || val == "true" || val == "True"
@@ -149,8 +143,7 @@ func (t *this) Bool(v interface{}) bool {
 	}
 }
 
-// Uint converts a string or numeric type to uint.
-func (t *this) Uint(v interface{}) uint {
+func (t *Ts) Uint(v interface{}) uint {
 	switch val := v.(type) {
 	case string:
 		if u, err := strconv.ParseUint(val, 10, 64); err == nil {
@@ -187,8 +180,7 @@ func (t *this) Uint(v interface{}) uint {
 	return 0
 }
 
-// Uint64 converts a string or numeric type to uint64.
-func (t *this) Uint64(v interface{}) uint64 {
+func (t *Ts) Uint64(v interface{}) uint64 {
 	switch val := v.(type) {
 	case string:
 		if u, err := strconv.ParseUint(val, 10, 64); err == nil {
@@ -223,14 +215,11 @@ func (t *this) Uint64(v interface{}) uint64 {
 	return 0
 }
 
-// Float32 converts to float32.
-func (t *this) Float32(v interface{}) float32 {
+func (t *Ts) Float32(v interface{}) float32 {
 	return float32(t.Float64(v))
 }
 
-// Json converts any type to its JSON string representation.
-// It pretty-prints the JSON.
-func (t *this) Json(v interface{}) string {
+func (t *Ts) Json(v interface{}) string {
 	data, err := json.MarshalIndent(v, "", "  ")
 	if err != nil {
 		return ""
@@ -238,9 +227,6 @@ func (t *this) Json(v interface{}) string {
 	return string(data)
 }
 
-// Add more "to" methods as needed, for example:
-
-// Uint32 converts to uint32.
-func (t *this) Uint32(v interface{}) uint32 {
+func (t *Ts) Uint32(v interface{}) uint32 {
 	return uint32(t.Uint64(v))
 }

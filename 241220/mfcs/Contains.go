@@ -4,6 +4,12 @@ import (
 	"github.com/thoas/go-funk"
 )
 
-func Contains(in interface{}, elem interface{}) bool {
+type Ts struct{}
+
+func New() *Ts {
+	return &Ts{}
+}
+
+func (t *Ts) Contains(in interface{}, elem interface{}) bool {
 	return funk.Contains(in, elem)
 }
