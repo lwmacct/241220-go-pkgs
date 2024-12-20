@@ -9,14 +9,14 @@ import (
 	"path/filepath"
 )
 
-type this struct {
+type This struct {
 }
 
-func New() *this {
-	return &this{}
+func New() *This {
+	return &This{}
 }
 
-func (t *this) CreateEmptyFile(Path string) error {
+func (t *This) CreateEmptyFile(Path string) error {
 	_, err := os.Stat(Path)
 	if err != nil {
 		if os.IsNotExist(err) {
@@ -33,7 +33,7 @@ func (t *this) CreateEmptyFile(Path string) error {
 	return nil
 }
 
-func (t *this) CreateEmptyDir(Path string) error {
+func (t *This) CreateEmptyDir(Path string) error {
 	err := os.MkdirAll(Path, os.ModePerm)
 	if err != nil {
 		return fmt.Errorf("创建目录失败: %v", err)
@@ -41,7 +41,7 @@ func (t *this) CreateEmptyDir(Path string) error {
 	return nil
 }
 
-func (t *this) CreateDirPath(filePath string) error {
+func (t *This) CreateDirPath(filePath string) error {
 	dir := filepath.Dir(filePath)
 	// 创建目录（如果不存在）
 	err := os.MkdirAll(dir, os.ModePerm)
@@ -52,7 +52,7 @@ func (t *this) CreateDirPath(filePath string) error {
 }
 
 // TailN 从文件末尾读取最后 numLines 行，每次读取128字节
-func (t *this) TailN(filePath string, numLines int, skipBlankLines bool) ([]string, error) {
+func (t *This) TailN(filePath string, numLines int, skipBlankLines bool) ([]string, error) {
 	var ret []string // 定义返回切片
 
 	if numLines <= 0 {
@@ -139,7 +139,7 @@ func (t *this) TailN(filePath string, numLines int, skipBlankLines bool) ([]stri
 }
 
 // 检查指定路径是否为空目录
-func (t *this) IsEmptyDir(path string) (bool, error) {
+func (t *This) IsEmptyDir(path string) (bool, error) {
 	// 获取路径的信息
 	info, err := os.Stat(path)
 	if err != nil {
