@@ -4,8 +4,9 @@ import "os"
 
 var direct *Ts = New(nil)
 
-func NewDirect(config *Config) {
+func NewDirect(config *Config) *Ts {
 	direct = New(config)
+	return direct
 }
 
 func Fatal(fields H) *Ts {
