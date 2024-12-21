@@ -2,6 +2,8 @@ module github.com/lwmacct/241220-go-pkgs
 
 go 1.23.4
 
+retract v0.0.1734695790
+
 require (
 	github.com/cespare/xxhash/v2 v2.3.0
 	github.com/redis/go-redis/v9 v9.7.0
