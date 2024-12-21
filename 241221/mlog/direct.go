@@ -4,7 +4,7 @@ import "os"
 
 var direct *Ts = New(nil)
 
-func SetConfig(config *Config) {
+func NewDirect(config *Config) {
 	direct = New(config)
 }
 
